@@ -3,13 +3,13 @@ var topics = ["football", "basketball", "soccer", "baseball", "hockey", "volleyb
 
 console.log(topics);
 //Show the buttons
-function renderButtons() {
+function renderBtns() {
  $("#sports-view").empty();
 
 //Loop through the array of topics
  for (var i = 0; i < topics.length; i++) {
  	var a = $("<button>");
- 	a.addClass("sports", "btn btn-info");
+ 	a.addClass("sports");
  	a.attr("data-name", topics[i]);
  	a.text(topics[i]);
  	$("#sports-view").append(a);
@@ -22,16 +22,15 @@ $("#add-sport").on("click", function(event) {
 	var sports = $("#sports-input").val().trim();
 	topics.push(sports);
 
-renderButtons();
+renderBtns();
 
 });
 
-renderButtons();
-
-//var apiKey = "228z5wIEwb7ZVKcEdK6NJoB2D87Mu7D7";
+renderBtns();
 
 
-
+//Bring in the gifs! First, our key:
+var apiKey = "228z5wIEwb7ZVKcEdK6NJoB2D87Mu7D7";
 
     $("button").on("click", function() {
     	$("#sportsGifs").empty()
@@ -40,7 +39,7 @@ renderButtons();
 
 // Constructing a URL to search giphy for the sport
       var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
-        sport + "&api_key=dc6zaTOxFJmzC&limit=10";
+        sport + "&api_key="+ apiKey + "&limit=10";
 
 // Perform the AJAX GET request
       $.ajax({
@@ -69,7 +68,7 @@ renderButtons();
 // Creating an image tag
               var sportImage = $("<img>");
 
-// Giving the image tag an src attribute of a proprty pulled off the result item
+// Giving the image tag an src attribute of a property pulled from the result item
               sportImage.attr("src", results[i].images.fixed_height.url);
 
 //Appending the paragraph and sportImage we created to the "gifDiv" div we created
@@ -83,4 +82,4 @@ renderButtons();
         });
     });
 
-//Make them still/animated
+//Make them still/animated with an on.("click") event
