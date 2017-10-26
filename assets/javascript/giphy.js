@@ -1,6 +1,5 @@
 //Get my topics
 var topics = ["football", "basketball", "soccer", "baseball", "hockey", "volleyball", "golf"];
-
 console.log(topics);
 //Show the buttons
 function renderBtns() {
@@ -21,6 +20,7 @@ $("#add-sport").on("click", function(event) {
 //Grab the new sport from the input box
 	var sports = $("#sports-input").val().trim();
 	topics.push(sports);
+	console.log(topics);
 
 renderBtns();
 
@@ -32,7 +32,7 @@ renderBtns();
 //Bring in the gifs! First, our key:
 var apiKey = "228z5wIEwb7ZVKcEdK6NJoB2D87Mu7D7";
 
-    $("button").on("click", function() {
+    $("#sports-view").on("click", ".sports", function() {
     	$("#sportsGifs").empty()
 //"this" refers to the button that was clicked
       var sport = $(this).attr("data-name");
@@ -51,23 +51,24 @@ var apiKey = "228z5wIEwb7ZVKcEdK6NJoB2D87Mu7D7";
 // Storing an array of results in the results variable
           var results = response.data;
 
-// Looping over every result item
+// Looping over each result item
           for (var i = 0; i < results.length; i++) {
 
-// Only taking action if the photo has an appropriate rating
+// Take action if the photo has an appropriate rating
             if (results[i].rating !== "r" && results[i].rating !== "pg-13") {
 // Creating a div with the class "item"
               var gifDiv = $("<div class='item'>");
 
-// Storing the result item's rating
+// Store the result item's rating
               var rating = results[i].rating;
 
 // Creating a paragraph tag with the result item's rating
               var p = $("<p>").text("Rating: " + rating);
 
 // Creating an image tag
+              var still = results[i].images.fixed_height.url;
+              var animated = results[i].images.fixed_height_still.url;
               var sportImage = $("<img>");
-
 // Giving the image tag an src attribute of a property pulled from the result item
               sportImage.attr("src", results[i].images.fixed_height.url);
 
@@ -83,3 +84,5 @@ var apiKey = "228z5wIEwb7ZVKcEdK6NJoB2D87Mu7D7";
     });
 
 //Make them still/animated with an on.("click") event
+
+//data-still when i hit api, data-animate, data-state, 

@@ -16,6 +16,7 @@ h3{
 input#add-sport{
 	width: 100px;
 	height: 40px;
+	border-radius: 6px;
 	font-size: 20px;
 	font-family: "Georgia", serif;
 	background-color: #af080e;
@@ -23,7 +24,7 @@ input#add-sport{
 
 }
 button.sports{
-	width: 100px;
+	width: auto;
 	height: 40px;
 	border-radius: 12px;
 	font-family: "Georgia", serif;
@@ -31,10 +32,9 @@ button.sports{
 	color: white;
 }
 
-
 .item{
 	float: left;
-	margin: 20px;
+	margin: 15px;
 }
 
 img {
@@ -47,12 +47,15 @@ p{
 }
 
 footer {
-	border-top: 1px solid #af080e;
 	width: 100%;
+	text-align: center;	
+}
+
+#p1{
+	border-top: 1px solid #af080e;
 	padding: 10px;
 	text-align: center;
 	font-size: 12px;
 	font-family: "Georgia", serif;
 	color: #af080e;
-	
 }
