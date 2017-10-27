@@ -32,7 +32,7 @@ renderBtns();
 var apiKey = "228z5wIEwb7ZVKcEdK6NJoB2D87Mu7D7";
 
 $("#sports-view").on("click", ".sports", function() {
-   $("#sportsGifs").empty()
+   $("#sportsGifs").empty();
 //"this" refers to the button that was clicked
       var sport = $(this).attr("data-name");
 
@@ -75,19 +75,21 @@ $("#sports-view").on("click", ".sports", function() {
               $("#sportsGifs").prepend(gifDiv);
             }
         }
+//       return false;
 	});
 
 //Grab the div where the gifs are and their class
-        $("#sportsGifs").on("click", ".moveImage", function(){
+        $("#sportsGifs").unbind().on("click", ".moveImage", function(){
         	var state = $(this).attr("data-state");
 //Check for current state and change it after the click
-        	if(state === 'still'){
-        		$(this).attr('src', $(this).data('animated'));
+        	if(state == 'still'){
+        		$(this).attr('src', $(this).attr("data-animated"));
         		$(this).attr('data-state', 'animated');
 			}else {
-				$(this).attr('src', $(this).data('still'));
+				$(this).attr('src', $(this).attr("data-still"));
 	       		$(this).attr('data-state', 'still');
 			}
+//			return false;
 	  });
 });
 
